@@ -1,0 +1,14 @@
+//定义
+
+var dateTime = function (date) {
+  var days = ['2018113', '2018114', '20181118','2018129']
+  if (date) {
+    return days.indexOf(date)
+  }
+}
+
+
+//输出
+module.exports = {
+  dateTime: dateTime,
+}

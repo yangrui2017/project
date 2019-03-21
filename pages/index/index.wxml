@@ -1,0 +1,42 @@
+<view class='wrap'>
+	<view>
+		<view class='date-show'>
+			<view class='lt-arrow' bindtap='lastMonth'>
+				上
+			</view>
+			{{year}}年{{month}}月
+			<view class='rt-arrow' bindtap='nextMonth'>
+				下
+			</view>
+		</view>
+	</view>
+	<view class='header'>
+		<view wx:for='{{date}}' wx:key="" class='{{(index == todayIndex) && isTodayWeek ? "weekMark" : ""}}'>{{item}}<view></view></view>
+	</view>
+	<view class='date-box'>
+    <!-- <wxs src="../filter/dateFr.wxs" module="filter" /> -->
+    <wxs module="m1">
+        var dateTime = function (days,date) {
+          console.log(days)
+          if (date) {
+            return days.indexOf(date)
+          }
+        }
+        module.exports.dateTime = dateTime;
+    </wxs>
+		<view wx:for='{{dateArr}}' wx:key=""  class='{{isToday == item.isToday ? "nowDay" : ""}} {{m1.dateTime(days,item.isToday) >= 0 ? "new" : ""}} {{item.isToday == daysclick ? "nowDay" : ""}}'  data-date='{{item.isToday}}' bindtap='dayclick'>			
+			<view class='date-head'>
+				<view class=''>{{item.dateNum}}</view>
+			</view>
+			<!-- <view class='date-weight'>{{item.weight}}</view> -->
+		</view>
+	</view>
+</view>
+
+
+
+
+
+
+
+
